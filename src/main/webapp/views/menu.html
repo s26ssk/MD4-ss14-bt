@@ -13,12 +13,18 @@
                 <a class="nav-link" href="/about">about</a>
             </li>
             <li class="nav-item dropdown">
-
-                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span th:text="${ session.email != null ? session.email : 'Thằng nguoi'}"></span></a>
-                <div class="dropdown-menu" aria-labelledby="dropdownId">
-                    <a class="dropdown-item" href="/login">Login</a>
-                    <a class="dropdown-item" href="/register">Register</a>
-                    <a class="dropdown-item" href="/logout">Logout</a>
+                <div th:if="${session.email == null}">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" href="/login">Login</a>
+                        <a class="dropdown-item" href="/register">Register</a>
+                    </div>
+                </div>
+                <div th:if="${session.email != null}">
+                    <a class="nav-link dropdown-toggle" href="#" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${session.email}"></a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                    </div>
                 </div>
             </li>
         </ul>

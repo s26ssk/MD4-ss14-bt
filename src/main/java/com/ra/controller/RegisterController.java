@@ -27,7 +27,6 @@ public class RegisterController {
             model.addAttribute("error", "Email đã được đăng ký");
             return "register";
         }
-
         userService.create(user);
         return "redirect:/login";
     }
